@@ -93,12 +93,12 @@
   <dialog id="dateDialog">
     <img  id="mihail-img" src="images/mihail0.jpg" alt="Mihail JPG" style="width:250px; height: auto; margin-bottom: 10px;">
 
-    <blockquote>
+
       <p class="quote"></p>
-    </blockquote>
+
     <h2>Сегодня <span id="day-of-week"></span>. Михаил <span id="dialog-weekday" class="weekday"></span>!</h2>
     <p>Завтра <span id="tommorow-free"></span>.</p>
-    <button id="closeDialog">Закройся!</button>
+    <button id="closeDialog">x</button>
   </dialog>
 
 
@@ -117,7 +117,7 @@
       return days[dayOfWeek];
     }
 
-    function getPhase() {
+    function getPhrase() {
       const phases = [
         "...засмотрелся на занавеску...",
         "НА!",
@@ -158,7 +158,7 @@
       const today = new Date();
       const tomorrow = new Date();
       tomorrow.setDate(today.getDate() + 1);
-      document.querySelector(".quote").textContent = '"' + getPhase() + '"';
+      document.querySelector(".quote").textContent = '"' + getPhrase() + '"';
 
       if (isMichailFree(today)) {
         document.getElementById('dialog-weekday').classList.remove('working-day');
@@ -183,7 +183,6 @@
       const dialog = document.getElementById('dateDialog');
       dialog.showModal();
 
-      // Close button functionality
       const closeButton = document.getElementById('closeDialog');
       closeButton.addEventListener('click', () => {
         dialog.close();
