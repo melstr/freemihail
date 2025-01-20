@@ -91,7 +91,7 @@
   </div>
 
   <dialog id="dateDialog">
-    <img src="mihail.jpg" alt="Mihail JPG" style="width:250px; height: auto; margin-bottom: 10px;">
+    <img  id="mihail-img" src="images/mihail0.jpg" alt="Mihail JPG" style="width:250px; height: auto; margin-bottom: 10px;">
 
     <blockquote>
       <p class="quote"></p>
@@ -132,6 +132,15 @@
       return phases[Math.floor(Math.random() * (phases.length))];
     }
 
+    function getMihail() {
+      const images = [
+      "mihail0.jpg", 
+      "mihail1.jpg", 
+      "mihail2.jpg"
+    ]
+      return images[Math.floor(Math.random() * images.length)];
+    }
+
     function isMichailFree(endDate) {
       const michailTwoWorkDayStart = new Date(2025, 0, 17);
       michailTwoWorkDayStart.setHours(0, 0, 0, 0);
@@ -166,6 +175,8 @@
         document.getElementById('tommorow-free').classList.add('working-day');
         document.getElementById('tommorow-free').textContent = "работает";
       }
+
+      document.getElementById('mihail-img').src = "images/" + getMihail();
 
       document.getElementById('day-of-week').textContent = getDayOfWeek(today.getDay());
 
