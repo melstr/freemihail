@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Михаил свободен?</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 80 100'%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%24000' font-size='20' font-family='sans-serif'%3EСВОБОДУ МИХАИЛУ%3C/text%3E%3C/svg%3E");
+      background-size: 170px 75px;
+      background-repeat: repeat;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    dialog {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    dialog::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .weekday {
+      /* Default style */
+      color: green;
+    }
+
+    .weekday.working-day {
+      color: red;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 20px;
+      color: gray;
+    }
+
+    #closeDialog {
+      position: absolute;
+      top: 16px;
+      right: 10px;
+      font-size: 20px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="title">Работает ли сегодня Михаил?</h1>
+    <button class="button" onclick="showDate()">Узнать</button>
+  </div>
+
+  <dialog id="dateDialog">
+    <img src="mihail.jpg" alt="Mihail JPG" style="width:250px; height: auto; margin-bottom: 10px;">
+
+    <blockquote>
+      <p class="quote"></p>
+    </blockquote>
+    <h2>Сегодня <span id="day-of-week"></span>. Михаил <span id="dialog-weekday" class="weekday"></span>!</h2>
+    <p>Завтра <span id="tommorow-free"></span>.</p>
+    <button id="closeDialog">Закройся!</button>
+  </dialog>
+
+
+  <script>
+
+    function getDayOfWeek(dayOfWeek) {
+      const days = [
+        "воскресенье",
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота"
+      ];
+      return days[dayOfWeek];
+    }
+
+    function getPhase() {
+      const phases = [
+        "...засмотрелся на занавеску...",
+        "НА!",
+        "Поймал пасатижами за яйца!",
+        "...деревенская присядка...",
+        "Простите за венгу :'(",
+        "саппорт без стиков...",
+        "ЙОУ",
+        "Разъебай печеный",
+        "План деревенский крюк"
+      ]
+      return phases[Math.floor(Math.random() * (phases.length))];
+    }
+
+    function isMichailFree(endDate) {
+      const michailTwoWorkDayStart = new Date(2025, 0, 17);
+      michailTwoWorkDayStart.setHours(0, 0, 0, 0);
+      endDate.setHours(0, 0, 0, 0);
+      const oneDay = 24 * 60 * 60 * 1000;
+
+      const diffInTime = endDate.getTime() - michailTwoWorkDayStart.getTime();
+
+      const diffInDays = Math.ceil(diffInTime / oneDay);
+      return Math.floor(diffInDays / 2 + 1) % 2 === 0;
+    }
+
+    function showDate() {
+
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+      document.querySelector(".quote").textContent = '"' + getPhase() + '"';
+
+      if (isMichailFree(today)) {
+        document.getElementById('dialog-weekday').classList.remove('working-day');
+        document.getElementById('dialog-weekday').textContent = "отдыхает";
+      } else {
+        document.getElementById('dialog-weekday').classList.add('working-day');
+        document.getElementById('dialog-weekday').textContent = "работает";
+      }
+
+      if (isMichailFree(tomorrow)) {
+        document.getElementById('tommorow-free').classList.remove('working-day');
+        document.getElementById('tommorow-free').textContent = "отдыхает";
+      } else {
+        document.getElementById('tommorow-free').classList.add('working-day');
+        document.getElementById('tommorow-free').textContent = "работает";
+      }
+
+      document.getElementById('day-of-week').textContent = getDayOfWeek(today.getDay());
+
+      const dialog = document.getElementById('dateDialog');
+      dialog.showModal();
+
+      // Close button functionality
+      const closeButton = document.getElementById('closeDialog');
+      closeButton.addEventListener('click', () => {
+        dialog.close();
+      });
+    }
+  </script>
+
+</body>
+
+</html>
