@@ -94,7 +94,7 @@
     <img  id="mihail-img" src="images/mihail0.jpg" alt="Mihail JPG" style="width:250px; height: auto; margin-bottom: 10px;">
 
 
-      <p class="quote"></p>
+      <div class="quote"></div>
 
     <h2>Сегодня <span id="day-of-week"></span>. Михаил <span id="dialog-weekday" class="weekday"></span>!</h2>
     <p>Завтра <span id="tommorow-free"></span>.</p>
@@ -118,7 +118,7 @@
     }
 
     function getPhrase() {
-      const phases = [
+      const phrases = [
         "...засмотрелся на занавеску...",
         "НА!",
         "Поймал пасатижами за яйца!",
@@ -127,9 +127,14 @@
         "саппорт без стиков...",
         "ЙОУ",
         "Разъебай печеный",
-        "План деревенский крюк"
+        "План деревенский крюк",
+        "На столе были ноги. Поплыли осьминоги",
+        "Есть!",
+        "Заебистолс",
+        "Уосау",
+        "Дизгастинг"
       ]
-      return phases[Math.floor(Math.random() * (phases.length))];
+      return phrases[Math.floor(Math.random() * (phrases.length))];
     }
 
     function getMihail() {
