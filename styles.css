@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 80 100'%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23ffffff' font-size='20' font-family='Inter' font-weight='300' opacity='0.1'%3EСВОБОДУ МИХАИЛУ%3C/text%3E%3C/svg%3E");
+  background-size: 170px 75px;
+  background-repeat: repeat;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2d3748;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 200px;
+  animation: buttonPulse 3s ease-in-out infinite;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Add a subtle pulse animation to make the button more noticeable */
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+}
+
+
+dialog {
+  border: none;
+  border-radius: 20px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 500px;
+  animation: dialogSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.weekday {
+  color: #48bb78;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.weekday.working-day {
+  color: #f56565;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #718096;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+#closeDialog {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a0aec0;
+  transition: color 0.2s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#closeDialog:hover {
+  color: #f56565;
+  background: rgba(245, 101, 101, 0.1);
+}
+
+#mihail-img {
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  width: 250px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#mihail-img:hover {
+  transform: scale(1.02);
+}
+
+/* Social links styling */
+.social-links {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.telegram-link,
+.steam-link {
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+.telegram-link a,
+.steam-link a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.telegram-link a {
+  color: #0088cc;
+  background: rgba(0, 136, 204, 0.1);
+}
+
+.telegram-link a:hover {
+  background: rgba(0, 136, 204, 0.2);
+  transform: translateY(-1px);
+}
+
+.steam-link a {
+  color: #1b2838;
+  background: rgba(27, 40, 56, 0.1);
+}
+
+.steam-link a:hover {
+  background: rgba(27, 40, 56, 0.2);
+  transform: translateY(-1px);
+}
+
+.telegram-link svg,
+.steam-link svg {
+  transition: transform 0.3s ease;
+}
+
+.telegram-link a:hover svg,
+.steam-link a:hover svg {
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  dialog {
+    width: 95vw;
+    padding: 30px 20px;
+  }
+  
+  .social-links {
+    gap: 12px;
+  }
+  
+  .telegram-link a,
+  .steam-link a {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .button {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+  
+  .social-links {
+    gap: 10px;
+  }
+  
+  .telegram-link a,
+  .steam-link a {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
