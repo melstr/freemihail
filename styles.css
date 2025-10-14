@@ -211,21 +211,26 @@ dialog::backdrop {
 }
 
 .telegram-link,
-.steam-link {
+.steam-link,
+.dotabuff-link {
   font-size: 0.95rem;
   color: #718096;
 }
 
 .telegram-link a,
-.steam-link a {
+.steam-link a,
+.dotabuff-link a {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 12px 20px;
   border-radius: 12px;
   transition: all 0.3s ease;
   font-weight: 500;
+  min-width: 280px;
+  width: 280px;
 }
 
 .telegram-link a {
@@ -248,13 +253,25 @@ dialog::backdrop {
   transform: translateY(-1px);
 }
 
+.dotabuff-link a {
+  color: #f39c12;
+  background: rgba(243, 156, 18, 0.1);
+}
+
+.dotabuff-link a:hover {
+  background: rgba(243, 156, 18, 0.2);
+  transform: translateY(-1px);
+}
+
 .telegram-link svg,
-.steam-link svg {
+.steam-link svg,
+.dotabuff-link img {
   transition: transform 0.3s ease;
 }
 
 .telegram-link a:hover svg,
-.steam-link a:hover svg {
+.steam-link a:hover svg,
+.dotabuff-link a:hover img {
   transform: scale(1.1);
 }
 
@@ -279,9 +296,12 @@ dialog::backdrop {
   }
   
   .telegram-link a,
-  .steam-link a {
+  .steam-link a,
+  .dotabuff-link a {
     padding: 10px 16px;
     font-size: 0.9rem;
+    min-width: 240px;
+    width: 240px;
   }
 }
 
@@ -300,8 +320,11 @@ dialog::backdrop {
   }
   
   .telegram-link a,
-  .steam-link a {
+  .steam-link a,
+  .dotabuff-link a {
     padding: 8px 14px;
     font-size: 0.85rem;
+    min-width: 200px;
+    width: 200px;
   }
 }
